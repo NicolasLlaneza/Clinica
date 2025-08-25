@@ -8,18 +8,8 @@ import jakarta.persistence.*;
 public class Empleado extends Persona {
 
     @Column(nullable = false)
-    private int idEmpleado;
-
-    @Column(nullable = false)
     private double sueldo;
 
-    public int getIdEmpleado() {
-        return idEmpleado;
-    }
-
-    public void setIdEmpleado(int idEmpleado) {
-        this.idEmpleado = idEmpleado;
-    }
 
     public double getSueldo() {
         return sueldo;

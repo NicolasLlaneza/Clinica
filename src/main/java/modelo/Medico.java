@@ -2,6 +2,11 @@ package modelo;
 
 import jakarta.persistence.*;
 
+import javax.xml.namespace.QName;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+
 @Entity
 @Table(name = "medico")
 
@@ -14,8 +19,13 @@ public class Medico extends Persona {
     private long celular;
 
     @ManyToMany
-    @JoinColumn(name = "id_especialidad")
-    private Especialidad especialidad;
+    @JoinTable(name = "medico_especialidad",joinColumns = @JoinColumn(name = "medico_id"),
+    inverseJoinColumns = @JoinColumn(name = "especialidad_id"))
+
+    private ArrayList<Especialidad> especialidad =new ArrayList<>();
+
+    @OneToMany(mappedBy = "medico", cascade = CascadeType.ALL)
+    private ArrayList<Turno> turnos;
 
     public int getMatricula() {
         return matricula;
@@ -33,11 +43,7 @@ public class Medico extends Persona {
         this.celular = celular;
     }
 
-    public Especialidad getEspecialidad() {
-        return especialidad;
-    }
-
     public void setEspecialidad(Especialidad especialidad) {
-        this.especialidad = especialidad;
     }
 }
+

@@ -16,7 +16,7 @@ public class Especialidad {
     @Column(nullable = false, unique = true)
     private String denominacion;
 
-    @OneToMany(mappedBy = "especialidad", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "especialidad", cascade = CascadeType.ALL)
     private List<Medico> medicos;
 
     public int getId() {
@@ -37,5 +37,9 @@ public class Especialidad {
 
     public void setMedicos(List<Medico> medicos) {
         this.medicos = medicos;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

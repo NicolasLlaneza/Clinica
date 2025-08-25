@@ -20,7 +20,7 @@ public class HistoriaClinica {
     @Column(name="fecha_alta", nullable = false)
     private Date fechaAlta;
 
-    @OneToMany(mappedBy = "historia_clinica")
+    @OneToMany(mappedBy = "historiaClinica")
     private List<DetalleHistoriaClinica> detallesHistoriaClinica;
 
     public int getId() {
